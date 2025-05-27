@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>Publiskā datubāze</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #1e3a8a;
+        }
+
+        .button-container {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e0e7ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Publiskā datubāze</h1>
+    <p>Šajā datubāzē tu vari apskatīt pieejamās vielas un aprīkojumu.</p>
+
+    <div class="button-container">
+        <button onclick="showAll()">Rādīt visu</button>
+        <button onclick="filterByType('Viela')">Rādīt vielas</button>
+        <button onclick="filterByType('Aprīkojums')">Rādīt aprīkojumu</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nosaukums</th>
+                <th>Tips</th>
+                <th>Apakštips</th>
+                <th>Skaits</th>
+                <th>Svars</th>
+                <th>Komentāri</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Saturs tiks ielādēts šeit -->
+        </tbody>
+    </table>
+
+    <script>
+        const dati = [
+            { ID: "KL1042724", Nosaukums: "Katalizators", Tips: "Aprīkojums", Apakštips: "Trauks", Skaits: 23, Svars: "", Komentāri: "Daži komentāri" },
+            { ID: "KL1042723", Nosaukums: "Birete", Tips: "Aprīkojums", Apakštips: "Trauks", Skaits: 20, Svars: "", Komentāri: "Daži komentāri" },
+            { ID: "KL1042742", Nosaukums: "HCl", Tips: "Viela", Apakštips: "Skābe", Skaits: 19, Svars: 40, Komentāri: "Daži komentāri" },
+            { ID: "KL1042725", Nosaukums: "Kolba", Tips: "Aprīkojums", Apakštips: "Trauks", Skaits: 20, Svars: "", Komentāri: "Daži komentāri" },
+            { ID: "KL1042534", Nosaukums: "Fe", Tips: "Viela", Apakštips: "Metāls", Skaits: 48, Svars: 10, Komentāri: "Daži komentāri" },
+            { ID: "KL1042721", Nosaukums: "Na", Tips: "Viela", Apakštips: "Metāls", Skaits: 20, Svars: "", Komentāri: "Daži komentāri" }
+        ];
+
+        function attelotTabulu(datiFiltrs) {
+            const tbody = document.getElementById("table-body");
+            tbody.innerHTML = "";
+            datiFiltrs.forEach(item => {
+                const rinda = `
+                    <tr>
+                        <td>${item.ID}</td>
+                        <td>${item.Nosaukums}</td>
+                        <td>${item.Tips}</td>
+                        <td>${item.Apaktips || item.Apakštips}</td>
+                        <td>${item.Skaits}</td>
+                        <td>${item.Svars}</td>
+                        <td>${item.Komentāri}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += rinda;
+            });
+        }
+
+        function showAll() {
+            attelotTabulu(dati);
+        }
+
+        function filterByType(tips) {
+            const filtrētie = dati.filter(item => item.Tips === tips);
+            attelotTabulu(filtrētie);
+        }
+
+        // Rādīt visu pēc noklusējuma
+        showAll();
+    </script>
+
+</body>
+</html>
