@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <title>Pieslēgties</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; display: flex; }
+    .left, .right { width: 50%; padding: 50px; box-sizing: border-box; }
+    .left { background-color: #0078d7; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .right { display: flex; flex-direction: column; justify-content: center; }
+    input, button { padding: 10px; margin: 10px 0; width: 100%; max-width: 300px; }
+    a { color: #0078d7; text-decoration: none; margin-top: 10px; }
+    .report { position: absolute; bottom: 20px; right: 20px; background: #ff4d4d; color: white; border: none; padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <div class="left">
+    <h1>Esi sveicināts <br> <strong>ĶLUS</strong></h1>
+    <p>Tavas laboratorijas uzskaites sistēma</p>
+    <img src="lab-image.png" alt="Laboratorija" style="width: 200px; margin-top: 30px;">
+  </div>
+  <div class="right">
+    <a href="index.html">&larr; Atpakaļ uz sākumlapu</a>
+    <h2>Pieslēgties</h2>
+    <p>Ķīmijas laboratorijas uzskaites sistēmai</p>
+    <input type="text" placeholder="Lietotājvārds">
+    <input type="password" placeholder="Parole">
+    <button>Pieslēgties</button>
+    <a href="#">Neesi vēl reģistrēts? Izveidot profilu</a>
+  </div>
+  <button class="report">Ziņot par kļūdu</button>
+</body>
+</html>
